@@ -1,2 +1,3 @@
 # CLI
-- tsc : typescript complie
+- npm i -g typescript
+- tsc : typescript compile
