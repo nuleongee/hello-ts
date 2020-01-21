@@ -1,5 +1,30 @@
 # CLI
+
 - npm i -g typescript
 - tsc : typescript compile
 - tsc 'target file'
 - tsc 'target file' -w : watch
+
+# tsconfig
+
+- --allowJs : js -> ts 점진적 변경
+- --checkJs : --allowJS와 같이
+- --baseUrl : 기본경로 설정 (경로문제 발생시)
+- --declaration / -d : .d.ts 생성
+- `--esModuleInterop` : import \* as React from 'react'?
+- --emitDecoratorMetadata : 데코레이터가 필요한 경우
+- --experimentalDecorators : 데코레이터가 필요한 경우
+- --help
+- --init
+- --jsx : tsx뿐만 아니라 jsx 또한 지원
+- --lib : 컴파일에 포함할 라이브러리 목록 ["DOM", "ES5", "ES2015", "ES2020"]
+- --outDir : tsc의 컴파일 결과물(js)를 다른 경로에 저장할 경우 설정
+- --target / -t : default "ES3" (IE11까지 지원 "ES5", IE지원 안 할시 "ES6"이상)
+- --types / --typeRoots : 개인 .d.ts 설정
+- --strict / --strict~ : true (typescript 사용 의미)
+- --noImplicit~ : true (typescript 사용 의미)
+- --module / -m : IE 지원 "CommonJS", IE지원 안 할시 "ES6"
+- --watch / -w
+- include : 컴파일할 파일 설정 ([lecture.ts])
+- exclude : 컴파일하지 않을 파일 설정 (["*.js"])
+- extends : 상속한 tsconfig 파일 설정
