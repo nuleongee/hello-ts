@@ -1,6 +1,14 @@
 let num: number;
 num = 3;
-let str: string = String(num);
+const str = "hello";
 
-let arr: [boolean, 3, string] = [true, 3, "3"]; // Tuple
-arr[1] = 3;
+const arr = [true, 2, "3"] as const; // Tuple
+
+const obj: { a: string; b?: number } = { a: "b" };
+
+enum Color {
+  Red,
+  Green,
+  Blue
+}
+let c: Color = Color.Green;
