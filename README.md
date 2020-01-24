@@ -42,4 +42,8 @@
 
 - const obj: { a: string; b: number } = { a: "b", b: 3 }; a, b 값 필수
 - const obj: { a: string; b?: number } = { a: "b"}; a 값 필수, b 값 나중에
--
+
+# Enum
+
+- enum Color { Red, Green, Blue }  
+  let c: Color = Color.Green;
