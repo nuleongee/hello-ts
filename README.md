@@ -31,19 +31,51 @@
 
 # Array / Tuple
 
-- `array[] / Array<number>`
-- let arr: (string | number | boolean)[] = [true, 2, '3']; string, number, boolean만 배열에 들어올 수 있음
-- let arr: [boolean, number, string] = [true, 3, "3"]; 각 자리 고정 타입설정
-- let arr: [boolean, 3, string] = [true, 3, "3"]; number자리 3으로 고정
-- let arr = []
-- let arr = [true, 2, "3"] as const; 상수화 (값 고정, readonly), 객체의 값 변형 방지(obj.a = 'c';)
+    `array[] / Array<number>`
+    let arr: (string | number | boolean)[] = [true, 2, '3']; //string, number, boolean만 배열에 들어올 수 있음
+    let arr: [boolean, number, string] = [true, 3, "3"]; //각 자리 고정 타입설정
+    let arr: [boolean, 3, string] = [true, 3, "3"]; //number자리 3으로 고정
+    let arr = [true, 2, "3"] as const; //상수화 (값 고정, readonly), 객체의 값 변형 방지(obj.a = 'c';)
 
 # Object
 
-- const obj: { a: string; b: number } = { a: "b", b: 3 }; a, b 값 필수
-- const obj: { a: string; b?: number } = { a: "b"}; a 값 필수, b 값 나중에
+    const obj: { a: string; b: number } = { a: "b", b: 3 }; //a, b 값 필수
+    const obj: { a: string; b?: number } = { a: "b"}; //a 값 필수, b 값 나중에
 
 # Enum
 
-- enum Color { Red, Green, Blue }  
-  let c: Color = Color.Green;
+    enum Color { Red, Green, Blue }
+    let c: Color = Color.Green;
+
+# Function
+
+    function add(a: number, b: number): number | string { //리턴 number or string
+      return a + b;
+    }
+
+    function clg(a: number, b: number): void {  //리턴없는 함수
+      console.log(a, b);
+    }
+
+    function func(a: number, b: number): (c: string) => number {  //함수를 타입으로 리턴
+      return (c: string) => {
+        return 3;
+      };
+    }
+
+    function add(a: number, b: number): (c: string) => (b: string) => boolean { //함수 안의 함수 리턴
+      return (c: string) => {
+        return (d: string) => {
+          return false;
+        };
+      };
+    }
+
+    const obj2: { a: (b: number, c?: string) => string } = {  //오버로딩 흉내
+      a(b: number, c?: string) {
+        return "hello";
+      }
+    };
+    obj2.a(); // 에러
+    obj2.a(3);  // b만
+    obj2.a(3, "hello"); // b, c
