@@ -28,3 +28,11 @@
 - include : 컴파일할 파일 설정 ([lecture.ts])
 - exclude : 컴파일하지 않을 파일 설정 (["*.js"])
 - extends : 상속한 tsconfig 파일 설정
+
+# array
+
+- `array[] / Array<number>`
+- let arr: (string | number | boolean)[] = [true, 2, '3']; string, number, boolean만 배열에 들어올 수 있음
+- let arr: [boolean, number, string] = [true, 3, "3"]; 각 자리 고정 타입설정
+- let arr: [boolean, 3, string] = [true, 3, "3"]; number자리 3으로 고정
+- let arr = []
