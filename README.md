@@ -79,3 +79,22 @@
     obj2.a(); // 에러
     obj2.a(3);  // b만
     obj2.a(3, "hello"); // b, c
+
+# 3
+
+    const resp = {
+      ROCK: "0",
+      SCISSORS: "-142px",
+      PAPER: "-284px"
+    } as const; //상수화
+
+    const resp = {
+      readonly ROCK: "0",
+      readonly SCISSORS: "-142px",
+      readonly PAPER: "-284px"
+    } as const; //객체
+    interface RSP {
+      ROCK: "0";
+      SCISSORS: "-142px";
+      PAPER: "-284px";
+    } //객체의 인터페이스화

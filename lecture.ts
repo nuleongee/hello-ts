@@ -1,31 +1,39 @@
-let num: number;
-num = 3;
-const str = "hello";
+let imgCoords = "0";
 
-const arr = [true, 2, "3"] as const; // Tuple
-
-const obj: { a: string; b?: number } = { a: "b" };
-
-enum Color {
-  Red,
-  Green,
-  Blue
-}
-let c: Color = Color.Green;
-
-function add(a: number, b: number): (c: string) => (b: string) => boolean {
-  return (c: string) => {
-    return (d: string) => {
-      return false;
-    };
-  };
+interface RSP {
+  readonly ROCK: "0";
+  SCISSORS: "-142px";
+  PAPER: "-284px";
 }
 
-const obj2: { a: (b: number, c?: string) => string } = {
-  a(b: number, c?: string) {
-    return "hello";
-  }
-};
-// obj2.a();
-obj2.a(3);
-obj2.a(3, "hello");
+const resp = {
+  ROCK: "0",
+  SCISSORS: "-142px",
+  PAPER: "-284px"
+} as const;
+
+const score = {
+  ROCK: 0,
+  SCISSORS: 1,
+  PAPER: -1
+} as const;
+
+function computerChoice(imgCoords): "ROCK" | "SCISSORS" | "PAPER" {
+  return Object.keys(rsp).find(k => rsp[k] === imgCoords);
+}
+
+document.querySelectorAll(".btn").forEach(btn => {
+  btn.addEventListener("click", function() {
+    const myChoice = this.textContent;
+    const myScore = score[myChoice];
+    const computerScore = score[computerChoice(imgCoords)];
+    const diff = myScroe - computerScore;
+    if (diff === 0) {
+      console.log("비겼습니다.");
+    } else if ([-1, 2].indexOf(diff)) {
+      console.log("이겼습니다.");
+    } else {
+      console.log("졌습니다.");
+    }
+  });
+});

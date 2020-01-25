@@ -1,13 +1,31 @@
-"use strict";
-let num;
-num = 3;
-const str = "hello";
-const arr = [true, 2, "3"]; // Tuple
-const obj = { a: "b" };
-var Color;
-(function (Color) {
-    Color[Color["Red"] = 0] = "Red";
-    Color[Color["Green"] = 1] = "Green";
-    Color[Color["Blue"] = 2] = "Blue";
-})(Color || (Color = {}));
-let c = Color.Green;
+var imgCoords = "0";
+var resp = {
+    ROCK: "0",
+    SCISSORS: "-142px",
+    PAPER: "-284px"
+};
+var score = {
+    ROCK: 0,
+    SCISSORS: 1,
+    PAPER: -1
+};
+function computerChoice(imgCoords) {
+    return Object.keys(rsp).find(function (k) { return rsp[k] === imgCoords; });
+}
+document.querySelectorAll(".btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        var myChoice = this.textContent;
+        var myScore = score[myChoice];
+        var computerScore = score[computerChoice(imgCoords)];
+        var diff = myScroe - computerScore;
+        if (diff === 0) {
+            console.log("비겼습니다.");
+        }
+        else if ([-1, 2].indexOf(diff)) {
+            console.log("이겼습니다.");
+        }
+        else {
+            console.log("졌습니다.");
+        }
+    });
+});
