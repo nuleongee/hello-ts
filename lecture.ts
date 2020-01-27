@@ -6,23 +6,11 @@ interface RSP {
   readonly PAPER: "-284px";
 }
 
-interface Example {
-  a: 3;
-  b: 7;
-  [key: string]: number;
-}
-
-const example: Example = {
-  a: 3,
-  b: 7,
-  d: 2
-};
-
 const rsp: RSP = {
   ROCK: "0",
   SCISSORS: "-142px",
   PAPER: "-284px"
-} as const;
+};
 
 const score = {
   ROCK: 0,
@@ -31,7 +19,9 @@ const score = {
 } as const;
 
 function computerChoice(imgCoords: RSP[keyof RSP]): keyof RSP {
-  return Object.keys(rsp).find(k => rsp[k] === imgCoords);
+  return (Object.keys(rsp) as ["ROCK", "SCISSORS", "PAPER"]).find(
+    k => rsp[k] === imgCoords
+  );
 }
 
 document.querySelectorAll(".btn").forEach(btn => {
