@@ -15,6 +15,8 @@ function computerChoice(imgCoords) {
 }
 document.querySelectorAll(".btn").forEach(btn => {
     btn.addEventListener("click", function (e) {
+        clearInterval(interval);
+        setTimeout(intervalMaker, 2000);
         const myChoice = this.textContent;
         const myScore = score[myChoice];
         const computerScore = score[computerChoice(imgCoords)];
@@ -22,11 +24,33 @@ document.querySelectorAll(".btn").forEach(btn => {
         if (diff === 0) {
             console.log("비겼습니다.");
         }
-        else if ([-1, 2].indexOf(diff)) {
+        else if ([-1, 2].includes(diff)) {
             console.log("이겼습니다.");
+            point++;
         }
         else {
             console.log("졌습니다.");
+            point--;
         }
+        document.querySelector("#point").textContent = String(point);
     });
 });
+let interval;
+function intervalMaker() {
+    interval = setInterval(function () {
+        if (imgCoords === rsp.ROCK) {
+            imgCoords = rsp.SCISSORS;
+        }
+        else if (imgCoords === rsp.SCISSORS) {
+            imgCoords = rsp.PAPER;
+        }
+        else {
+            imgCoords = rsp.ROCK;
+        }
+        if (document.querySelector("#computer")) {
+            document.querySelector("#computer").style.background = `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoords} 0`;
+        }
+    }, 100);
+}
+intervalMaker();
+let point = 0;
