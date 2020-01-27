@@ -165,3 +165,20 @@
 # tsc ignore
 
 When input files are specified on the command line, tsconfig.json files are ignored.
+
+# public / protected / private
+
+- public : 아무 데서나 접근 가능 (default) / 내 클래스 or 상속받은 자식 or instance에서 접근 가능
+- protected : 중간 권한 / 내 클래스 or 상속받은(extends) 자식은 접근가능
+- private : 접근 불가 / 내 클래스 안에서만(constructor 내부) 접근 가능
+
+- instance : 설계도를 바탕으로 소프트웨어 세계에 구현된 구체적인 실체
+
+# interface / class
+
+- interface : class의 모양을 규정, 실제로 쓰이지 않음
+- class : instance의 모양을 규정
+
+* class는 new를 통해 찍어내기 위함
+* extends가 아닌 implements로 class에서 interface를 상속?
+* public일 경우에만 구현 가능 (protected, private는 부모에서 접근 불가)
