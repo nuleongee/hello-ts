@@ -1,4 +1,4 @@
-let imgCoords = "0";
+let imgCoords: RSP[keyof RSP] = "0";
 
 interface RSP {
   readonly ROCK: "0";
@@ -25,11 +25,11 @@ function computerChoice(imgCoords: RSP[keyof RSP]): keyof RSP {
 }
 
 document.querySelectorAll(".btn").forEach(btn => {
-  btn.addEventListener("click", function() {
-    const myChoice = this.textContent;
+  btn.addEventListener("click", function(this: HTMLButtonElement, e: Event) {
+    const myChoice = this.textContent as keyof RSP;
     const myScore = score[myChoice];
     const computerScore = score[computerChoice(imgCoords)];
-    const diff = myScroe - computerScore;
+    const diff = myScore - computerScore;
     if (diff === 0) {
       console.log("비겼습니다.");
     } else if ([-1, 2].indexOf(diff)) {

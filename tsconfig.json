@@ -13,5 +13,6 @@
     ],
     "target": "ES6"
   },
-  "exclue": ["*.js"]
+  "exclude": ["*.js"],
+  "include": ["lecture.ts"]
 }
