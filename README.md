@@ -93,8 +93,48 @@
       readonly SCISSORS: "-142px",
       readonly PAPER: "-284px"
     } as const; //객체
+
+# Interface
+
+객체에 주로 쓰임
+
     interface RSP {
       ROCK: "0";
       SCISSORS: "-142px";
       PAPER: "-284px";
     } //객체의 인터페이스화
+    interface Example extends RSP {
+
+    } //인터페이스 상속
+    const rsp: Example = {
+      ROCK: '0',
+      SCISSORS: '-142px',
+      PAPER: '-284px'
+    }
+
+    interface RSP {
+      readonly ROCK: "0";
+    }
+    interface RSP {
+      readonly SCISSORS: "-142px";
+      readonly PAPER: "-284px";
+    } //인터페이스 합치기
+
+    typeof RSP // RSP의 키값
+    RSP[typeof RSP] // RSP의 값
+
+    interface Example {
+      a: 3;
+      b: 7;
+      [key: string]: number;  //객체의 interface가 확실하지 않을때 여유를 두는 방법
+    }
+
+# type alias
+
+인터페이스 보다 넓은 범위
+
+    type RSP = {
+      readonly ROCK: "0";
+      readonly SCISSORS: "-142px";
+      readonly PAPER: "-284px";
+    } | string; // interface와 다른 부분
