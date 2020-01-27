@@ -21,7 +21,7 @@ const score = {
 function computerChoice(imgCoords: RSP[keyof RSP]): keyof RSP {
   return (Object.keys(rsp) as ["ROCK", "SCISSORS", "PAPER"]).find(
     k => rsp[k] === imgCoords
-  );
+  )!;
 }
 
 document.querySelectorAll(".btn").forEach(btn => {
