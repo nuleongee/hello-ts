@@ -1,25 +1,19 @@
 "use strict";
-class Card {
-    constructor(hero, mine) {
-        if (hero) {
-            return new Hero(mine);
-        }
-        else {
-            this.att = Math.ceil(Math.random() * 5);
-            this.hp = Math.ceil(Math.random() * 5);
-            this.cost = Math.floor((this.att + this.hp) / 2);
-        }
-        if (mine) {
-            this.mine = true;
-        }
-    }
-}
-class Hero extends Card {
+class Hero {
     constructor(mine) {
-        super(true, mine);
+        this.mine = mine;
         this.att = Math.ceil(Math.random() * 2);
         this.hp = Math.ceil(Math.random() * 5) + 25;
         this.hero = true;
+        this.field = true;
+    }
+}
+class Sub {
+    constructor(mine) {
+        this.field = false;
+        this.mine = mine;
+        this.att = Math.ceil(Math.random() * 2);
+        this.hp = Math.ceil(Math.random() * 5) + 25;
         this.field = true;
     }
 }
@@ -45,4 +39,3 @@ const me = {
     chosenCard: null,
     chosenCardData: null
 };
-new Card();

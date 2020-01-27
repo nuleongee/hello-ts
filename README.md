@@ -180,5 +180,36 @@ When input files are specified on the command line, tsconfig.json files are igno
 - class : instance의 모양을 규정
 
 * class는 new를 통해 찍어내기 위함
-* extends가 아닌 implements로 class에서 interface를 상속?
+* extends가 아닌 `implements`로 class에서 interface를 상속?
 * public일 경우에만 구현 가능 (protected, private는 부모에서 접근 불가)
+
+# 제네릭 generic
+
+    function add(a: string, b: string): string {
+      return a + b;
+    }
+    function add(a: number, b: number): number {
+      return a + b;
+    }
+    //add 중복
+
+    function add(a: string | number, b: string | number): string | number {
+      return a + b;
+    }
+    add(1, 'abc'); // 원하는 결과가 아님
+
+
+    function add<T>(a: T, b: T): T {
+      return a + b;
+    }
+
+
+    interface obj<T> {  //선언
+      add: (a: T, b: T) => T;
+    }
+    const a: obj<number> = {  //number로 사용
+      add: (a, b) => a + b,
+    }
+    const b: obj<string> = {  //string으로 사용
+      add: (a, b) => a + b,
+    }
