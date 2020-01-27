@@ -80,6 +80,10 @@
     obj2.a(3);  // b만
     obj2.a(3, "hello"); // b, c
 
+# nerver
+
+# any
+
 # 3
 
     const resp = {
@@ -138,3 +142,26 @@
       readonly SCISSORS: "-142px";
       readonly PAPER: "-284px";
     } | string; // interface와 다른 부분
+
+# function의 this
+
+    btn.addEventListener("click", function(this: HTMLButtonElement, e: Event) { //JS와 다른점 첫번째 매개변수가 this가 됨
+      //this 사용가능
+    }
+
+# !
+
+타임스크립트에 확인을 주는 방법
+
+# string
+
+타임스트립트는 document.querySelector("#computer")의 string값이 같다는걸 모른다  
+변수 하나로 처기하거나 as를 쓸것!
+
+    if (document.querySelector("#computer")) {
+    (document.querySelector("#computer") as HTMLDivElement).style.background = `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoords} 0`;
+    }
+
+# tsc ignore
+
+When input files are specified on the command line, tsconfig.json files are ignored.
