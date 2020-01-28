@@ -82,9 +82,28 @@
 
 # nerver
 
+배열을 잘 못 만든 경우
+
+    const arr: [] = []; // 배열에 어떠한 요소도 들어가지 못한다
+    arr2.push(3);
+
 # any
 
-# 3
+typescript에서 any는 지양한다
+
+1. javascript === anyscript
+
+2. 남이 만들어둔 잘못된 d.ts 파일의 수정을 위해
+
+   const hello: number;
+
+   (hello `as unknown` as string).substring(1, 2);  
+   or  
+   (<string><unkown>hello).substring(1, 2);
+
+3. 타입 정의할 때 너무 복잡해서 못 만들겠을 경우
+
+# 3강
 
     const resp = {
       ROCK: "0",
