@@ -7,6 +7,8 @@
 
 # tsconfig
 
+    $ tsc --init
+
 - --allowJs : js -> ts 점진적 변경
 - --checkJs : --allowJS와 같이
 - --baseUrl : 기본경로 설정 (경로문제 발생시)
