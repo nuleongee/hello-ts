@@ -16,3 +16,12 @@ console.log(array);
 
 const result = document.createElement("h1");
 body.append(result);
+const form = document.createElement("form");
+body.append(form);
+const input = document.createElement("input");
+form.append(input);
+input.type = "text";
+input.maxLength = 4;
+const button = document.createElement("button");
+button.textContent = "입력";
+form.append(button);
