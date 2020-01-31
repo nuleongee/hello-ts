@@ -25,3 +25,48 @@ input.maxLength = 4;
 const button = document.createElement("button");
 button.textContent = "입력";
 form.append(button);
+
+let wrongCount = 0;
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  const answer = input.value;
+  if (answer === array.join("")) {
+    // 답이 맞으면
+    result.textContent = "홈런";
+    input.value = "";
+    input.focus();
+    chooseNumber();
+    wrongCount = 0;
+  } else {
+    // 답이 틀리면
+    const answerArray = answer.split("");
+    let strike = 0;
+    let ball = 0;
+    wrongCount += 1;
+    if (wrongCount > 10) {
+      // 10번 넘게 틀린 경우
+      result.textContent = `10번 넘게 틀려서 실패! 답은 ${array.join(
+        ","
+      )} 였습니다!`;
+      input.value = "";
+      input.focus();
+      chooseNumber();
+      wrongCount = 0;
+    } else {
+      // 10번 미만으로 틀린 경우
+      console.log("답이 틀리면", answerArray);
+      for (let i = 0; i <= 3; i += 1) {
+        if (Number(answerArray[i]) === array[i]) {
+          // 같은 자리인지 확인
+          strike += 1;
+        } else if (array.indexOf(Number(answerArray[i])) > -1) {
+          // 같은 자리는 아니지만, 숫자가 겹치는 경우
+          ball += 1;
+        }
+      }
+      result.textContent = `${strike} 스트라이트 ${ball}볼 입니다.`;
+      input.value = "";
+      input.focus();
+    }
+  }
+});
