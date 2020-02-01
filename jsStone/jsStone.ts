@@ -26,11 +26,12 @@ class Sub implements Card {
   public hp: number;
   public field: boolean = false;
   public mine: boolean;
+  public cost: number;
   constructor(mine: boolean) {
     this.mine = mine;
     this.att = Math.ceil(Math.random() * 2);
     this.hp = Math.ceil(Math.random() * 5) + 25;
-    this.field = true;
+    this.cost = Math.floor((this.att + this.hp) / 2);
   }
 }
 
@@ -69,3 +70,12 @@ const me: Player = {
   chosenCard: null,
   chosenCardData: null
 };
+
+function forEach<T>(arr: T[], callback: (item: T) => void): void {
+  for (let i: number = 0; i < arr.length; i++) {
+    callback(arr[i]);
+  }
+}
+forEach<number>([1, 2, 3], item => {});
+
+document.addEventListener("submit", () => {});

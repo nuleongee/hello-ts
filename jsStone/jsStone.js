@@ -1,23 +1,25 @@
 "use strict";
-class Hero {
-    constructor(mine) {
+var Hero = /** @class */ (function () {
+    function Hero(mine) {
         this.mine = mine;
         this.att = Math.ceil(Math.random() * 2);
         this.hp = Math.ceil(Math.random() * 5) + 25;
         this.hero = true;
         this.field = true;
     }
-}
-class Sub {
-    constructor(mine) {
+    return Hero;
+}());
+var Sub = /** @class */ (function () {
+    function Sub(mine) {
         this.field = false;
         this.mine = mine;
         this.att = Math.ceil(Math.random() * 2);
         this.hp = Math.ceil(Math.random() * 5) + 25;
-        this.field = true;
+        this.cost = Math.floor((this.att + this.hp) / 2);
     }
-}
-const opponent = {
+    return Sub;
+}());
+var opponent = {
     hero: document.getElementById("rival-hero"),
     deck: document.getElementById("rival-deck"),
     field: document.getElementById("rival-cards"),
@@ -28,7 +30,7 @@ const opponent = {
     chosenCard: null,
     chosenCardData: null
 };
-const me = {
+var me = {
     hero: document.getElementById("my-hero"),
     deck: document.getElementById("my-deck"),
     field: document.getElementById("my-cards"),
@@ -39,3 +41,10 @@ const me = {
     chosenCard: null,
     chosenCardData: null
 };
+function forEach(arr, callback) {
+    for (var i = 0; i < arr.length; i++) {
+        callback(arr[i]);
+    }
+}
+forEach([1, 2, 3], function (item) { });
+document.addEventListener("submit", function () { });

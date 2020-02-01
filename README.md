@@ -234,3 +234,35 @@ When input files are specified on the command line, tsconfig.json files are igno
     const b: obj<string> = {  //string으로 사용
       add: (a, b) => a + b,
     }
+
+# 제네릭 extends (addEventListener)
+
+extends는 K값의 제한을 두기위해 사용
+
+    addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+
+# Array.prototype.find (lib.d.ts)
+
+경우를 나눠서 두가지로 선언
+
+    // this가 있는경우
+    find<S extends T>(predicate: (this: void, value: T, index: number, obj: T[]) => value is S, thisArg?: any): S | undefined;
+    // this가 없는경우
+    find(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): T | undefined;
+
+# forEach 구현: 제네릭 주목
+
+    function forEach<T>(arr: T[], callback: (item: T) => void): void {
+      for (let i: number = 0; i < arr.length; i++) {
+        callback(arr[i]);
+      }
+    }
+
+    forEach<number>([1, 2, 3], item => {});
+
+# 배열 선언방법
+
+1. T[]  
+   (T extends S)[]
+2. Array<T>  
+   Array<(T extends S)>
