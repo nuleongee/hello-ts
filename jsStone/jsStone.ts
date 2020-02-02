@@ -111,7 +111,7 @@ function createDeck({ mine, count }: { mine: boolean; count: number }) {
 function createHero({ mine }: { mine: boolean }) {
   const player = mine ? me : opponent;
   player.heroData = new Hero(mine);
-  connectCardDOM(player.heroData, player.hero, true);
+  connectCardDOM({ data: player.heroData, DOM: player.hero, hero: true });
 }
 
 function redrawScreen({ mine }: { mine: boolean }) {
@@ -126,24 +126,29 @@ function redrawHero(target: Player) {
     throw new Error("heroData가 없습니다.");
   }
   target.hero.innerHTML = "";
-  connectCardDOM(target.heroData, target.hero, true);
+  connectCardDOM({ data: target.heroData, DOM: target.hero, hero: true });
 }
 
 function redrawDeck(target: Player) {
   target.deck.innerHTML = "";
   target.deckData.forEach(data => {
-    connectCardDOM(data, target.deck);
+    connectCardDOM({ data, DOM: target.deck });
   });
 }
 
 function redrawField(target: Player) {
   target.field.innerHTML = "";
   target.fieldData.forEach(data => {
-    connectCardDOM(data, target.field);
+    connectCardDOM({ data, DOM: target.field });
   });
 }
 
-function connectCardDOM(data: Card, DOM: HTMLElement, hero?: boolean) {
+interface A {
+  data: Card;
+  DOM: HTMLDivElement;
+  hero?: boolean;
+}
+function connectCardDOM({ data, DOM, hero = false }: A) {
   const cardEl = document
     .querySelector(".card-hidden .card")!
     .cloneNode(true) as HTMLDivElement;

@@ -77,7 +77,7 @@ function createHero(_a) {
     var mine = _a.mine;
     var player = mine ? me : opponent;
     player.heroData = new Hero(mine);
-    connectCardDOM(player.heroData, player.hero, true);
+    connectCardDOM({ data: player.heroData, DOM: player.hero, hero: true });
 }
 function redrawScreen(_a) {
     var mine = _a.mine;
@@ -91,21 +91,22 @@ function redrawHero(target) {
         throw new Error("heroData가 없습니다.");
     }
     target.hero.innerHTML = "";
-    connectCardDOM(target.heroData, target.hero, true);
+    connectCardDOM({ data: target.heroData, DOM: target.hero, hero: true });
 }
 function redrawDeck(target) {
     target.deck.innerHTML = "";
     target.deckData.forEach(function (data) {
-        connectCardDOM(data, target.deck);
+        connectCardDOM({ data: data, DOM: target.deck });
     });
 }
 function redrawField(target) {
     target.field.innerHTML = "";
     target.fieldData.forEach(function (data) {
-        connectCardDOM(data, target.field);
+        connectCardDOM({ data: data, DOM: target.field });
     });
 }
-function connectCardDOM(data, DOM, hero) {
+function connectCardDOM(_a) {
+    var data = _a.data, DOM = _a.DOM, _b = _a.hero, hero = _b === void 0 ? false : _b;
     var cardEl = document
         .querySelector(".card-hidden .card")
         .cloneNode(true);
