@@ -58,6 +58,7 @@ function initiate() {
     redrawScreen({ mine: true });
     redrawScreen({ mine: false });
 }
+initiate();
 function createDeck(_a) {
     var mine = _a.mine, count = _a.count;
 }

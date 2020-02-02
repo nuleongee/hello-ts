@@ -91,6 +91,8 @@ function initiate() {
   redrawScreen({ mine: false });
 }
 
+initiate();
+
 function createDeck({ mine, count }: { mine: boolean; count: number }) {}
 
 function createHero({ mine }: { mine: boolean }) {
