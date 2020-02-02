@@ -19,6 +19,18 @@ var Sub = /** @class */ (function () {
     }
     return Sub;
 }());
+function isHero(data) {
+    if (data.hero) {
+        return true;
+    }
+    return false;
+}
+function isSub(data) {
+    if (data.cost) {
+        return true;
+    }
+    return false;
+}
 var opponent = {
     hero: document.getElementById("rival-hero"),
     deck: document.getElementById("rival-deck"),
@@ -81,6 +93,7 @@ function connectCardDOM(_a) {
     cardEl.querySelector(".card-att").textContent = String(data.att);
     cardEl.querySelector(".card-hp").textContent = String(data.hp);
     if (hero) {
+        // 영웅일때
         cardEl.querySelector(".card-cost").style.display =
             "none";
         var name_1 = document.createElement("div");
@@ -88,8 +101,18 @@ function connectCardDOM(_a) {
         cardEl.appendChild(name_1);
     }
     else {
+        // 졸병일때
         cardEl.querySelector(".card-cost").textContent = String(data.cost);
     }
+    cardEl.addEventListener("click", function () {
+        if (isSub(data) && data.mine === turn && !data.field) {
+            // 쫄병이면
+            if (!deckToField({ data: data })) {
+                // 쫄병 하나 덱에서 뽑았으면,
+                createDeck({ mine: turn, count: 1 }); // 덱에 새로운 쫄병 하나 추가
+            }
+        }
+    });
     DOM.appendChild(cardEl);
 }
 function redrawScreen(_a) {
@@ -105,11 +128,31 @@ function redrawHero(target) {
     connectCardDOM({ data: target.heroData, DOM: target.hero, hero: true });
 }
 function redrawDeck(target) {
-    if (!target.deckData) {
-        throw new Error("deckData가 없습니다.");
-    }
     target.deck.innerHTML = "";
     target.deckData.forEach(function (data) {
         connectCardDOM({ data: data, DOM: target.deck });
     });
+}
+function redrawField(target) {
+    target.field.innerHTML = "";
+    target.fieldData.forEach(function (data) {
+        connectCardDOM({ data: data, DOM: target.field });
+    });
+}
+function deckToField(_a) {
+    var data = _a.data;
+    var target = turn ? me : opponent;
+    var currentCost = Number(target.cost.textContent);
+    if (currentCost < data.cost) {
+        alert("코스트가 모자릅니다.");
+        return true;
+    }
+    data.field = true;
+    var index = target.deckData.indexOf(data);
+    target.deckData.splice(index, 1);
+    target.fieldData.push(data);
+    redrawDeck(target);
+    redrawField(target);
+    target.cost.textContent = String(currentCost - data.cost); // 남은 코스트 줄이기
+    return false;
 }

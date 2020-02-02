@@ -266,3 +266,20 @@ extends는 K값의 제한을 두기위해 사용
    (T extends S)[]
 2. Array<T>  
    Array<(T extends S)>
+
+# type guard
+
+`is`
+
+    function isHero(data: Card): data is Sub {
+      if (data.hero) {
+        return true;
+      }
+      return false;
+    }
+    function isSub(data: Card): data is Sub {
+      if (data.cost) {
+        return true;
+      }
+      return false;
+    }
