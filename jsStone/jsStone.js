@@ -51,8 +51,8 @@ function initiate() {
         item.chosenCard = null;
         item.chosenCardData = null;
     });
-    // createDeck({mine: false, count: 5});
-    // createDeck();
+    createDeck({ mine: false, count: 5 });
+    createDeck({ mine: true, count: 5 });
     createHero({ mine: false });
     createHero({ mine: true });
     redrawScreen({ mine: true });
@@ -61,6 +61,11 @@ function initiate() {
 initiate();
 function createDeck(_a) {
     var mine = _a.mine, count = _a.count;
+    var player = mine ? me : opponent;
+    for (var i = 0; i < count; i++) {
+        player.deckData.push(new Sub(mine));
+    }
+    redrawDeck(player);
 }
 function createHero(_a) {
     var mine = _a.mine;
@@ -82,6 +87,9 @@ function connectCardDOM(_a) {
         name_1.textContent = "영웅";
         cardEl.appendChild(name_1);
     }
+    else {
+        cardEl.querySelector(".card-cost").textContent = String(data.cost);
+    }
     DOM.appendChild(cardEl);
 }
 function redrawScreen(_a) {
@@ -95,4 +103,13 @@ function redrawHero(target) {
     }
     target.hero.innerHTML = "";
     connectCardDOM({ data: target.heroData, DOM: target.hero, hero: true });
+}
+function redrawDeck(target) {
+    if (!target.deckData) {
+        throw new Error("deckData가 없습니다.");
+    }
+    target.deck.innerHTML = "";
+    target.deckData.forEach(function (data) {
+        connectCardDOM({ data: data, DOM: target.deck });
+    });
 }
