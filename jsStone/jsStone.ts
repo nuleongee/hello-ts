@@ -72,3 +72,4 @@ const me: Player = {
 };
 
 const turnButton = document.getElementById("turn-btn") as HTMLButtonElement;
+let turn = true; // true면 내 턴, false면 상대 턴
