@@ -14,7 +14,7 @@ var Sub = /** @class */ (function () {
         this.field = false;
         this.mine = mine;
         this.att = Math.ceil(Math.random() * 2);
-        this.hp = Math.ceil(Math.random() * 5) + 25;
+        this.hp = Math.ceil(Math.random() * 5);
         this.cost = Math.floor((this.att + this.hp) / 2);
     }
     return Sub;
@@ -41,10 +41,57 @@ var me = {
     chosenCard: null,
     chosenCardData: null
 };
-function forEach(arr, callback) {
-    for (var i = 0; i < arr.length; i++) {
-        callback(arr[i]);
-    }
+var turnButton = document.getElementById("turn-btn");
+var turn = true; // true면 내 턴, false면 상대 턴
+function initiate() {
+    [opponent, me].forEach(function (item) {
+        item.deckData = [];
+        item.heroData = null;
+        item.fieldData = [];
+        item.chosenCard = null;
+        item.chosenCardData = null;
+    });
+    // createDeck({mine: false, count: 5});
+    // createDeck();
+    createHero({ mine: false });
+    createHero({ mine: true });
+    redrawScreen({ mine: true });
+    redrawScreen({ mine: false });
 }
-forEach([1, 2, 3], function (item) { });
-document.addEventListener("submit", function () { });
+function createDeck(_a) {
+    var mine = _a.mine, count = _a.count;
+}
+function createHero(_a) {
+    var mine = _a.mine;
+    var player = mine ? me : opponent;
+    player.heroData = new Hero(mine);
+    connectCardDOM({ data: player.heroData, DOM: player.hero, hero: true });
+}
+function connectCardDOM(_a) {
+    var data = _a.data, DOM = _a.DOM, _b = _a.hero, hero = _b === void 0 ? false : _b;
+    var cardEl = document
+        .querySelector(".card-hidden .card")
+        .cloneNode(true);
+    cardEl.querySelector(".card-att").textContent = String(data.att);
+    cardEl.querySelector(".card-hp").textContent = String(data.hp);
+    if (hero) {
+        cardEl.querySelector(".card-cost").style.display =
+            "none";
+        var name_1 = document.createElement("div");
+        name_1.textContent = "영웅";
+        cardEl.appendChild(name_1);
+    }
+    DOM.appendChild(cardEl);
+}
+function redrawScreen(_a) {
+    var mine = _a.mine;
+    var player = mine ? me : opponent;
+    redrawHero(player);
+}
+function redrawHero(target) {
+    if (!target.heroData) {
+        throw new Error("heroData가 없습니다.");
+    }
+    target.hero.innerHTML = "";
+    connectCardDOM({ data: target.heroData, DOM: target.hero, hero: true });
+}
