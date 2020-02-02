@@ -10,7 +10,7 @@ class Hero implements Card {
   public att: number;
   public hp: number;
   public hero: boolean;
-  public field: boolean;
+  public field: true;
   public mine: boolean;
   constructor(mine: boolean) {
     this.mine = mine;
@@ -30,7 +30,7 @@ class Sub implements Card {
   constructor(mine: boolean) {
     this.mine = mine;
     this.att = Math.ceil(Math.random() * 2);
-    this.hp = Math.ceil(Math.random() * 5) + 25;
+    this.hp = Math.ceil(Math.random() * 5);
     this.cost = Math.floor((this.att + this.hp) / 2);
   }
 }
@@ -40,11 +40,11 @@ interface Player {
   deck: HTMLDivElement;
   field: HTMLDivElement;
   cost: HTMLDivElement;
-  deckData: Card[];
-  heroData?: Card | null;
-  fieldData: Card[];
+  deckData: Sub[];
+  heroData?: Hero | null;
+  fieldData: Sub[];
   chosenCard?: HTMLDivElement | null;
-  chosenCardData?: HTMLDivElement | null;
+  chosenCardData?: Card | null;
 }
 
 const opponent: Player = {
@@ -71,11 +71,4 @@ const me: Player = {
   chosenCardData: null
 };
 
-function forEach<T>(arr: T[], callback: (item: T) => void): void {
-  for (let i: number = 0; i < arr.length; i++) {
-    callback(arr[i]);
-  }
-}
-forEach<number>([1, 2, 3], item => {});
-
-document.addEventListener("submit", () => {});
+const turnButton = document.getElementById("turn-btn") as HTMLButtonElement;
