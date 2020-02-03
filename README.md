@@ -288,3 +288,31 @@ extends는 K값의 제한을 두기위해 사용
       }
       return false;
     }
+
+# 모듈 시스템
+
+`commonjs`- node.js module system
+
+- module.js
+
+      const hello = "module";
+      module.exports = hello;
+
+- run.js
+
+      const hello = require("./module");
+      console.log(hello);
+
+  ***
+
+- module.js
+
+      const hello = "module";
+
+      exports.a = "b";
+      exports.c = false;
+
+* run.js
+
+      const { a, b } = require("./module");
+      console.log(a, b);
