@@ -291,23 +291,25 @@ extends는 K값의 제한을 두기위해 사용
 
 # 모듈 시스템
 
-`commonjs`- node.js module system
+`commonjs`- node.js module system  
+module.exports와 exports.a 같이 사용 불가
 
 - module.js
 
-      const hello = "module";
-      module.exports = hello;
+      module.exports = {
+        a: 'b',
+        b: false,
+      };
 
 - run.js
 
       const hello = require("./module");
+
       console.log(hello);
 
   ***
 
 - module.js
-
-      const hello = "module";
 
       exports.a = "b";
       exports.c = false;
@@ -315,4 +317,61 @@ extends는 K값의 제한을 두기위해 사용
 * run.js
 
       const { a, b } = require("./module");
+
       console.log(a, b);
+
+`es2015 module`  
+export default function과 export 같이 사용 가능
+
+- moudle.js
+
+      export default function() {}
+
+- run.js
+
+      import { a, b } from "./module";
+
+      console.log(a, b);
+
+  ***
+
+- moudle.js
+
+      const a = "b";
+
+      export { a };
+      export const b = false;
+
+- run.js
+
+      import { a, b } from "./module";
+
+      console.log(a, b);
+
+  ***
+
+같이 사용
+
+- moudle.js
+
+      const a = "b";
+
+      export { a };
+      export const b = false;
+
+      export default function() {}
+
+- run.js
+
+      import hi, { a, b } from "./module";
+
+      console.log(a, b);
+      console.log(hi);
+
+  ***
+
+commonjs의 module.exports를 ts모듈에서 가져오기위해서는
+
+      import * as hi from './module';
+
+      (esModuleInterop 키면 * as 사용 가능, 허나 비추천)

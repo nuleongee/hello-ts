@@ -1,4 +1,6 @@
-const hello = "module";
+const a = "b";
 
-exports.a = "b";
-exports.c = false;
+export { a };
+export const b = false;
+
+export default function() {}
