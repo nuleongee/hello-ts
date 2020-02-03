@@ -77,6 +77,12 @@ function isSub(data: Card): data is Sub {
   }
   return false;
 }
+function isHero(data: Card): data is Hero {
+  if (data.hero) {
+    return true;
+  }
+  return false;
+}
 
 const turnButton = document.getElementById("turn-btn") as HTMLButtonElement;
 let turn = true; // true면 내 턴, false면 상대 턴

@@ -237,9 +237,14 @@ When input files are specified on the command line, tsconfig.json files are igno
 
 # 제네릭 extends (addEventListener)
 
+제네릭에 대한 제약사항
 extends는 K값의 제한을 두기위해 사용
 
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+
+# 제네릭 기본값
+
+    <K extends keyof DocumentEventMap = 'click'>
 
 # Array.prototype.find (lib.d.ts)
 
