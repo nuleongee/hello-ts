@@ -375,3 +375,17 @@ commonjs의 module.exports를 ts모듈에서 가져오기위해서는
       import * as hi from './module';
 
       (esModuleInterop 키면 * as 사용 가능, 허나 비추천)
+
+# d.ts export / import
+
+- export
+
+      declare function a() {
+      };
+      export = a;
+
+- import
+
+      import * as A from "./common";
+      or
+      import A = require("./common");

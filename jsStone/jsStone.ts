@@ -1,4 +1,6 @@
 import { Card, Player } from "./types";
+import A = require("./common");
+import * as A from "./common";
 
 const opponent: Player = {
   hero: document.getElementById("rival-hero") as HTMLDivElement,
