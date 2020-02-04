@@ -1,5 +1,5 @@
 import { Card, Player } from "./types";
-import A = require("./common");
+// import A = require("./common");
 import * as A from "./common";
 
 const opponent: Player = {

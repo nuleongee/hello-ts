@@ -389,3 +389,17 @@ commonjs의 module.exports를 ts모듈에서 가져오기위해서는
       import * as A from "./common";
       or
       import A = require("./common");
+
+# DefinitelyTyped
+
+DefinitelyTyped에서 type을 지원하지 않는 패키지의 d.ts파일 찾아서 적용
+
+\$ npm i jquery @types/jquery
+
+# React d.ts
+
+    export = React;
+    export as namespace React;
+
+    import * as React from 'react;
+    React.Component   // namespace이기 때문에 .을 붙여 바로 접근 가능
