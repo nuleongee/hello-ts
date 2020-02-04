@@ -1,4 +1,5 @@
 "use strict";
+exports.__esModule = true;
 var opponent = {
     hero: document.getElementById("rival-hero"),
     deck: document.getElementById("rival-deck"),
@@ -43,6 +44,12 @@ var Sub = /** @class */ (function () {
 }());
 function isSub(data) {
     if (data.cost) {
+        return true;
+    }
+    return false;
+}
+function isHero(data) {
+    if (data.hero) {
         return true;
     }
     return false;
