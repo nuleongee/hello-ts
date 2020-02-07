@@ -425,3 +425,8 @@ interface나 type alias 두개를 모두 만족하게 설정
       or
       bye: true
     }
+
+# git push 여러 아이디
+
+$ git config --local user.name "emsbn"
+$ git config --local user.email "emsbn1@gmail.com"
