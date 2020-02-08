@@ -403,3 +403,19 @@ DefinitelyTyped에서 type을 지원하지 않는 패키지의 d.ts파일 찾아
 
     import * as React from 'react;
     React.Component   // namespace이기 때문에 .을 붙여 바로 접근 가능
+
+# TS 유틸리티
+
+인터페이스 관련 추가 기능  
+중복되는 코드와 행동을 막을 수 있음
+
+- Partial
+- Readonly
+- Pick
+- Omit
+- Exclude
+- Extract
+- ReturnType
+- Required
+- OmitThisParameter
+- ThisType
