@@ -1,28 +1,47 @@
-interface A {
-  a: "b";
-  b: true;
-  c: 123;
+function makeGender(target: typeof Person) {
+  console.log("hello");
+  return class extends target {
+    gender = "male";
+  };
 }
 
-const a: A = {
-  a: "b",
-  b: true,
-  c: 123
-};
+function readonly(target: any, key: any, descriptor: PropertyDescriptor) {
+  console.log(target, key, descriptor);
+  descriptor.writable = false;
+}
 
-const b: Partial<A> = {
-  a: "b"
-};
+@makeGender
+class Person {
+  title: string;
+  age = 27;
 
-const c: Readonly<A> = {
-  // a,b,c 앞에 readonly 붙인 효과
-  a: "b",
-  b: true,
-  c: 123
+  constructor(title: string) {
+    this.title = name;
+  }
+  setTitle(title: string) {
+    this.title = title;
+  }
+  @readonly sayTitle(): any {
+    return this.title;
+  }
+}
+const emsbn = new Person("emsbn");
+console.log("sayTitle", emsbn.sayTitle());
+emsbn.sayTitle = () => {
+  return "changed";
 };
+console.log("sayTitle", emsbn.sayTitle());
 
-interface B {
-  readonly a: "b";
-  readonly b: true;
-  readonly c: 123;
+@makeGender
+class Person2 {
+  title: string;
+  age = 27;
+
+  constructor(title: string) {
+    this.title = name;
+  }
+  setTitle(title: string) {}
+  sayTitle(): any {
+    return this.title;
+  }
 }

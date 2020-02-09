@@ -433,7 +433,7 @@ $ git config --local user.email "emsbn1@gmail.com"
 
 # TS 유틸리티
 
-인터페이스 관련 추가 기능  
+`인터페이스` 관련 추가 기능  
 중복되는 코드와 행동을 막을 수 있음
 
 - Partial
@@ -446,3 +446,10 @@ $ git config --local user.email "emsbn1@gmail.com"
 - Required
 - OmitThisParameter
 - ThisType
+
+# 데코레이터
+
+`클래스`나 `클래스의 property, method, parameter` 관련  
+코드위 중복을 줄임  
+stage 2
+객체지향 프로그래밍에서 클래스의 중복을 제거하기 어려운데 데코레이터로 쉽게 제거 가능

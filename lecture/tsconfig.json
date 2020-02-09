@@ -13,8 +13,8 @@
       "ES2020"
     ],
     "typeRoots": ["./types", "./node_modules/@types"],
-    "declaration": true,
-    "declarationDir": "./types"
+    "experimentalDecorators": true,
+    "target": "ES6"
   },
   "exclude": ["*.js"]
 }
