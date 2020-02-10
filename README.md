@@ -404,6 +404,33 @@ DefinitelyTyped에서 type을 지원하지 않는 패키지의 d.ts파일 찾아
     import * as React from 'react;
     React.Component   // namespace이기 때문에 .을 붙여 바로 접근 가능
 
+# intersection
+
+interface나 type alias 두개를 모두 만족하게 설정  
+중복을 막고 재사용을 위해
+
+    interface A {
+      hello: true
+    }
+    interface B{
+      bye: true
+    }
+    const c: A & B {  // A, B 둘 다 만족
+      hello: true,
+      bye: true
+    }
+
+    const c: A | B {  // A, B 둘 중 하나만 만족
+      hello: true,
+      or
+      bye: true
+    }
+
+# git push 여러 아이디
+
+$ git config --local user.name "emsbn"
+$ git config --local user.email "emsbn1@gmail.com"
+
 # TS 유틸리티
 
 인터페이스 관련 추가 기능  
