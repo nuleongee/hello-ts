@@ -10,6 +10,10 @@ function readonly(target: any, key: any, descriptor: PropertyDescriptor) {
   descriptor.writable = false;
 }
 
+function readonlyProperty(target: any, key: any, index: number) {
+  console.log(target, key, index);
+}
+
 @makeGender
 class Person {
   title: string;
@@ -18,7 +22,7 @@ class Person {
   constructor(title: string) {
     this.title = name;
   }
-  setTitle(title: string) {
+  setTitle(@readonlyProperty title: string) {
     this.title = title;
   }
   @readonly sayTitle(): any {

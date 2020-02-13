@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 function makeGender(target) {
     console.log("hello");
     return class extends target {
@@ -18,6 +21,9 @@ function readonly(target, key, descriptor) {
     console.log(target, key, descriptor);
     descriptor.writable = false;
 }
+function readonlyProperty(target, key, index) {
+    console.log(target, key, index);
+}
 let Person = class Person {
     constructor(title) {
         this.age = 27;
@@ -30,6 +36,9 @@ let Person = class Person {
         return this.title;
     }
 };
+__decorate([
+    __param(0, readonlyProperty)
+], Person.prototype, "setTitle", null);
 __decorate([
     readonly
 ], Person.prototype, "sayTitle", null);
