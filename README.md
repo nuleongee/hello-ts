@@ -426,11 +426,6 @@ interface나 type alias 두개를 모두 만족하게 설정
       bye: true
     }
 
-# git push 여러 아이디
-
-$ git config --local user.name "emsbn"
-$ git config --local user.email "emsbn1@gmail.com"
-
 # TS 유틸리티
 
 `인터페이스` 관련 추가 기능  
@@ -455,3 +450,8 @@ stage 2
 객체지향 프로그래밍에서 클래스의 중복을 제거하기 어려운데 데코레이터로 쉽게 제거 가능
 
 기존 기능에 새로운 기능을 추가 또는 기존 기능 수정
+
+# git push 여러 아이디
+
+$ git config --local user.name "emsbn"  
+$ git config --local user.email "emsbn1@gmail.com"
